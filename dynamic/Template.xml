@@ -1,0 +1,98 @@
+<Exercise id="1">
+  <name>Find Eulerian Cycles</name>
+  <internalNotes></internalNotes>
+  <language>en</language>
+  <difficulty>0</difficulty>
+  <tags id="2"/>
+  <resources id="3"/>
+  <stages id="4">
+    <DNDVisibleZonesStage id="5">
+      <internalName>#1</internalName>
+      <externalName>Subtask 1</externalName>
+      <taskDescription>&lt;div&gt;[var=graph]&lt;/div&gt;
+&lt;div&gt;&nbsp;Please provide {article} {type} of this graph by draging the names of the edges into the correct order.
+Start at node [var=start_node]. If there is no {type} in this graph, leave the box empty.&lt;/div&gt;
+        </taskDescription>
+      <feedbackRules id="6">
+        <FeedbackRule id="7">
+          <name>Feedback </name>
+          <orderIndex>0</orderIndex>
+          <validationExpression id="8">
+            <code>evaluateInR(&quot;any(sapply([var=active_solutions], identical, y = [input=dropArea1]))&quot;)</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;Correct.&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="9"/>
+        </FeedbackRule>
+        <FeedbackRule id="10">
+          <name>Feedback </name>
+          <orderIndex>1</orderIndex>
+          <validationExpression id="11">
+            <code>1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;Incorrect.&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>false</terminal>
+          <fieldsToBeMarked id="12"/>
+        </FeedbackRule>
+      </feedbackRules>
+      <defaultTransition id="13">
+        <conditionExpression id="14">
+          <domain>MATH</domain>
+        </conditionExpression>
+        <stageExpression id="15">
+          <domain>MATH</domain>
+        </stageExpression>
+        <type>NEXT_OR_END</type>
+        <extraWeight>0</extraWeight>
+      </defaultTransition>
+      <skipTransitions id="16"/>
+      <stageTransitions id="17"/>
+      <hints id="18"/>
+      <variableUpdatesOnEnter id="19"/>
+      <variableUpdatesBeforeCheck id="20"/>
+      <variableUpdatesAfterCheck id="21"/>
+      <variableUpdatesOnNormalExit id="22"/>
+      <variableUpdatesOnRepeat id="23"/>
+      <variableUpdatesOnSkip id="24"/>
+      <weight>1</weight>
+      <orderIndex>0</orderIndex>
+      <allowSkip>false</allowSkip>
+      <resources id="25"/>
+      <imageURL></imageURL>
+      <imageWidth>0</imageWidth>
+      <imageHeight>0</imageHeight>
+      <resizeImageProportionally>true</resizeImageProportionally>
+      <draggables id="26">
+          {draggables}
+      </draggables>
+      <dropAreas id="31">
+        <DNDVisibleZonesDropArea id="32">
+          <variableName>dropArea1</variableName>
+          <width>400</width>
+          <height>50</height>
+          <xPosition>0</xPosition>
+          <yPosition>0</yPosition>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>true</infiniteDraggables>
+          <label></label>
+          <backgroundColor>ffffff</backgroundColor>
+          <borderColor>004c93</borderColor>
+          <horizontalDraggableAlignment>true</horizontalDraggableAlignment>
+          <dndVisibleZonesStage reference="5"/>
+        </DNDVisibleZonesDropArea>
+      </dropAreas>
+      <shuffleDraggables>false</shuffleDraggables>
+    </DNDVisibleZonesStage>
+  </stages>
+  <startStage class="DNDVisibleZonesStage" reference="5"/>
+  <variableDeclarations id="33">
+     {variable_declarations}
+  </variableDeclarations>
+  <jSXGraphs id="44"/>
+  <dynamicMolecules id="45"/>
+  <resultFeedbackMappings id="46"/>
+</Exercise>

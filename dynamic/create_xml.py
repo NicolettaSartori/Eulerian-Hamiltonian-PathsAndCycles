@@ -9,16 +9,6 @@ def int_to_char(start, i):
 def escape_html(s):
     return s.replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
 
-def svg_to_data_uri(svg_string: str) -> str:
-    # Replace double quotes with single quotes
-    svg_string = svg_string.replace('"', "'")
-    # Remove newlines and extra whitespace
-    svg_string = ' '.join(svg_string.split())
-    # Percent-encode special characters for use in URL
-    encoded_svg = urllib.parse.quote(svg_string, safe='()/,\':')
-    # Prepend the header for SVG data URIs
-    data_uri = f"data:image/svg+xml,{encoded_svg}"
-    return data_uri
 
 def format_list(l):
     return "list(" + ",".join(l) + ")"
@@ -34,11 +24,9 @@ def format_variable_declaration(name, id, code):
     </VariableDeclaration>
     """.format(id1=id, id2=id + 1, name=name, code=escape_html(code))
 
-
 def format_graphviz_graph(graph):
     svg = graph.pipe(format='svg').decode('utf-8')
     svg = "\"<img src=" + svg_to_data_uri(svg[svg.index('<svg'):]) + ">\""
-    # svg = svg[svg.index('<svg'):]
     return svg
 
 def format_graphviz_graphs(name, id, graphs):
@@ -59,14 +47,14 @@ def node_to_edge_solutions(solutions, edges):
 
 
 def format_draggable(name, id):
-    return '''<DNDVisibleZonesDraggable id="{id}">
+    return f'''<DNDVisibleZonesDraggable id="{id}">
     <variableName>{name}</variableName>
     <htmlContent>&lt;div&gt;{name}&lt;/div&gt;</htmlContent>
     <numberOfDraggables>1</numberOfDraggables>
     <infiniteDraggables>false</infiniteDraggables>
     <dndVisibleZonesStage reference="5"/>
 </DNDVisibleZonesDraggable>
-'''.format(name=name,id=id)
+'''
 
 def format_draggables(start, id , num):
     string = ""

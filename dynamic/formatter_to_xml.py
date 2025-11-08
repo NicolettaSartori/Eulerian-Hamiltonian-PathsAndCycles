@@ -22,6 +22,9 @@ ensuring the variables are added in the appropriate format.
 3. The XML will be modified with the new variables and saved back to the same file.
 """
 
+def escape_html(s):
+    return s.replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
+
 def format_single_input_to_xml(name, input_str, current_id):
     """
     Formats a single input string into an XML VariableDeclaration block.
@@ -30,7 +33,7 @@ def format_single_input_to_xml(name, input_str, current_id):
 <VariableDeclaration id="{current_id + 1}">
   <name>{name}</name>
   <initializationCode id="{current_id + 2}">
-    <code>{input_str}</code>
+    <code>{escape_html(input_str)}</code>
     <domain>MATH</domain>
   </initializationCode>
 </VariableDeclaration>

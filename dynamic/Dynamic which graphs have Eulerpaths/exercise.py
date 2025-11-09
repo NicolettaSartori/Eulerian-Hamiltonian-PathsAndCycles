@@ -7,8 +7,8 @@ sys.path.append(parent_dir)
 from gviz import nx_to_graphviz, graphviz_to_svg_datauri, nx_to_graphviz_node_degree
 from create_xml import format_list
 from formatter_to_xml import clear_variable_declarations, format_to_xml
-from functools import partial
 from graphs import correct_graphs, wrong_graphs
+
 
 
 # wrong_feedbacks = [

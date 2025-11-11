@@ -13,7 +13,7 @@ def has_eulerian_path(graph):
 
 def generate_eulerian_path_multigraph(max_edges=14):
     G = nx.MultiGraph()
-    nodes = list(range(1, random.randint(6, 10)))
+    nodes = list(range(0, random.randint(6, 10)))
     num_edges = random.randint(len(nodes) + 3, max_edges)
     for _ in range(num_edges):
         u, v = random.sample(nodes, 2)
@@ -24,14 +24,14 @@ def generate_eulerian_path_multigraph(max_edges=14):
         G.remove_edge(u, v, k)
         u, v = random.sample(nodes, 2)
         if random.random() < 0.1:
-            u = len(nodes) + 1
+            u = len(nodes)
         G.add_edge(u, v)
     return G
 
 
 def generate_no_eulerian_path_multigraph(max_edges=14):
     G = nx.MultiGraph()
-    nodes = list(range(1, random.randint(6, 10)))
+    nodes = list(range(0, random.randint(6, 10)))
     num_edges = random.randint(len(nodes) + 3, max_edges)
     edges = []
     for _ in range(num_edges):
@@ -43,7 +43,7 @@ def generate_no_eulerian_path_multigraph(max_edges=14):
         u, v = random.sample(nodes, 2)
 
         if random.random() < 0.1:
-            u = len(nodes) + 1
+            u = len(nodes)
 
         G.add_edge(u, v)
 

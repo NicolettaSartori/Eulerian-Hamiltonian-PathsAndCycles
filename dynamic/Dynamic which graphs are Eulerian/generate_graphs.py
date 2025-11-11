@@ -11,7 +11,7 @@ from gviz import nx_to_graphviz
 
 def generate_eulerian_multigraph(max_edges=14):
     G = nx.MultiGraph()
-    nodes = list(range(1, random.randint(6, 10)))
+    nodes = list(range(0, random.randint(6, 10)))
     num_edges = random.randint(len(nodes) + 3, max_edges)
     # start with graph of random edges
     for _ in range(num_edges):
@@ -29,7 +29,7 @@ def generate_eulerian_multigraph(max_edges=14):
 
 def generate_non_eulerian_multigraph(max_edges=14):
     G = nx.MultiGraph()
-    nodes = list(range(1, random.randint(6, 10)))
+    nodes = list(range(0, random.randint(6, 10)))
     num_edges = random.randint(len(nodes) + 3, max_edges)
     # Start with a cycle (Eulerian)
     edges = [(nodes[i], nodes[(i + 1) % len(nodes)]) for i in range(len(nodes))]
@@ -64,7 +64,6 @@ for i, g in enumerate(wrong_graphs):
 
 # Save graphs to Python file with constructor calls
 def save_graphs_to_python_file(correct_graphs, wrong_graphs, filename='graphs.py'):
-
     with open(filename, 'w') as f:
         f.write("import networkx as nx\n\n")
 

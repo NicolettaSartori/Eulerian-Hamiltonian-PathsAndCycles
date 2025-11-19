@@ -1,6 +1,4 @@
-import urllib.parse
-
-import graphviz
+from gviz import svg_to_data_uri
 
 def int_to_char(start, i):
     return chr(ord(start) + i)

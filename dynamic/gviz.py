@@ -1,7 +1,6 @@
 import graphviz
-import urllib
+import urllib.parse
 import networkx as nx
-import xml.etree.ElementTree as ET
 
 def svg_to_data_uri(svg_string: str) -> str:
     svg_string = svg_string.replace('"', "'")

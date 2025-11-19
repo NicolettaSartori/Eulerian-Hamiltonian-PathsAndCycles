@@ -10,7 +10,7 @@
       <internalName>#1</internalName>
       <externalName>Subtask 1</externalName>
       <taskDescription>&lt;div&gt;[var=graph]&lt;/div&gt;
-&lt;div&gt;&nbsp;Please provide {article} {type} of this graph by draging the names of the edges into the correct order.
+&lt;div&gt;Please provide {article} {type} of this graph by draging the names of the edges into the correct order.
 Start at node [var=start_node]. If there is no {type} in this graph, leave the box empty.&lt;/div&gt;
         </taskDescription>
       <feedbackRules id="6">

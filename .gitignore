@@ -208,3 +208,6 @@ site/
 ###### Custom #######
 main.py
 .python-version
+
+dynamic/xml-output/*
+!dynamic/xml-output/.gitinclude

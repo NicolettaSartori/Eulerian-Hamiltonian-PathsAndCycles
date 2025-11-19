@@ -1,10 +1,10 @@
 from functools import partial
+import os
 
 import networkx as nx
-import create_xml
 import generate_solutions as gs
 from create_xml import format_variable_declaration, format_all_solutions, format_graphviz_graphs
-from create_xml import format_draggables, node_to_edge_solutions
+from create_xml import format_draggables
 from gviz import nx_to_graphviz
 
 graphs = [
@@ -42,16 +42,22 @@ def export_exercise(generate_fn, title, article, type, filename):
     variable_declarations += format_variable_declaration("start_node", id + 10,
                                                          "try(getFromList(0,getFromList(0,[var=active_solutions])),'a')")
 
-    with open('Template.xml', 'r') as file:
+    # Get the directory where this script is located
+    SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+    # Use absolute paths based on the script location
+    template_path = os.path.join(SCRIPT_DIR, 'Template.xml')
+    output_path = os.path.join(SCRIPT_DIR, 'xml-output', filename)
+
+    with open(template_path, 'r') as file:
         content = file.read()
         content = content.format(variable_declarations=variable_declarations,
                                  draggables=format_draggables("a", 27, max_num_edges), title=title, article=article,
                                  type=type)
-        with open(filename, 'w') as file:
+        with open(output_path, 'w') as file:
             file.write(content)
 
 
-export_exercise(gs.find_all_eulerian_cycles_starting_at_one_node, "Find Eulerian Cycles","an", "eulerian cycle", "Find+Eulerian+Cycles.xml")
-export_exercise(gs.find_all_eulerian_paths_starting_at_one_node, "Find Eulerian Paths", "an", "eulerian path", "Find+Eulerian+Paths.xml")
-export_exercise(gs.find_all_hamiltonian_cycles_starting_at_one_node, "Find Hamiltonian Cycles", "a", "hamiltonian cycle", "Find+Hamiltonian+Cycles.xml")
-export_exercise(gs.find_all_hamiltonian_paths_starting_at_one_node, "Find Hamiltonian Paths", "a", "hamiltonian path", "Find+Hamiltonian+Paths.xml")
+export_exercise(gs.find_all_eulerian_cycles_starting_at_one_node, "Find Eulerian Cycles","an", "eulerian cycle", "FindEulerianCycles.xml")
+export_exercise(gs.find_all_eulerian_paths_starting_at_one_node, "Find Eulerian Paths", "an", "eulerian path", "FindEulerianPaths.xml")
+export_exercise(gs.find_all_hamiltonian_cycles_starting_at_one_node, "Find Hamiltonian Cycles", "a", "hamiltonian cycle", "FindHamiltonianCycles.xml")
+export_exercise(gs.find_all_hamiltonian_paths_starting_at_one_node, "Find Hamiltonian Paths", "a", "hamiltonian path", "FindHamiltonianPaths.xml")

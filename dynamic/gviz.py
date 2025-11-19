@@ -28,11 +28,11 @@ def nx_to_graphviz(nx_graph, labeled_edges=False, labeled_nodes=True, start_node
 
     for node in nx_graph.nodes():
         if labeled_nodes:
-            if node == start_node:                  
-                g.node(str(node), label=f"{chr(ord("A") + node)}\n(Start)", shape="circle", penwidth="4",
+            if node == start_node:
+                g.node(str(node), label=f"{chr(ord("A") + node - 1)}\n(Start)", shape="circle", penwidth="4",
                 fixedsize="true", width="0.75", height="0.75")
             else:
-                g.node(str(node), label=chr(ord("A") + node ), shape="circle", fixedsize="true",
+                g.node(str(node), label=chr(ord("A") + node - 1), shape="circle", fixedsize="true",
                      width="0.75", height="0.75")
         else:
             g.node(str(node), label="", shape="circle", fixedsize="true", width="0.75", height="0.75")
@@ -85,10 +85,10 @@ def nx_to_graphviz_with_marked_path(nx_graph, path=[], labeled_edges=False, labe
     for node in nx_graph.nodes():
         if labeled_nodes:
             if node == start_node:
-                g.node(str(node), label=f"{chr(ord("A") + node )}\n(Start)", shape="circle", penwidth="4",
+                g.node(str(node), label=f"{chr(ord("A") + node - 1)}\n(Start)", shape="circle", penwidth="4",
                        fixedsize="true", width="0.75", height="0.75")
             else:
-                g.node(str(node), label=chr(ord("A") + node ), shape="circle", fixedsize="true",
+                g.node(str(node), label=chr(ord("A") + node - 1), shape="circle", fixedsize="true",
                        width="0.75", height="0.75")
         else:
             g.node(str(node), label="", shape="circle", fixedsize="true", width="0.75", height="0.75")

@@ -18,12 +18,18 @@ graphs = [
     nx.MultiGraph([(1,2), (2,3), (3,4), (4,5), (5,1), (2, 4), (3, 5), (2,6), (3,6), (4,6), (5,6)]),
 ]
 
-graphviz_graphs = map(partial(nx_to_graphviz, labeled_edges=True), graphs)
+start_node = 1
+# start_node = None
+
+graphviz_graphs = map(partial(nx_to_graphviz, labeled_edges=True, start_node=start_node), graphs)
 
 max_num_edges = max([len(g.edges) for g in graphs])
 
 
 def export_exercise(generate_fn, title, article, type, filename):
+    if start_node is not None:
+        generate_fn = partial(gs.find_all_hamiltonian_cycles_starting_at_one_node, start_node=start_node)
+
     all_solutions = list(map(generate_fn, graphs))
 
     for solutions in all_solutions:
@@ -39,8 +45,7 @@ def export_exercise(generate_fn, title, article, type, filename):
                                                          "getFromList([var=variant], [var=all_solutions])")
     variable_declarations += format_graphviz_graphs("graphs", id + 6, graphviz_graphs)
     variable_declarations += format_variable_declaration("graph", id + 8, "getFromList([var=variant], [var=graphs])")
-    variable_declarations += format_variable_declaration("start_node", id + 10,
-                                                         "try(getFromList(0,getFromList(0,[var=active_solutions])),'a')")
+    variable_declarations += format_variable_declaration("start_node", id + 10, f"'{chr(ord('A') + start_node - 1)}'")
 
     # Get the directory where this script is located
     SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -50,9 +55,12 @@ def export_exercise(generate_fn, title, article, type, filename):
 
     with open(template_path, 'r') as file:
         content = file.read()
-        content = content.format(variable_declarations=variable_declarations,
-                                 draggables=format_draggables("a", 27, max_num_edges), title=title, article=article,
-                                 type=type)
+        content = content.format(
+            variable_declarations=variable_declarations,
+            draggables=format_draggables("a", 27, max_num_edges),
+            title=title,
+            article=article,
+            type=type)
         with open(output_path, 'w') as file:
             file.write(content)
 

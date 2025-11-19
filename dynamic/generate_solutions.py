@@ -85,11 +85,10 @@ def find_all_eulerian_cycles(graph):
             find_eulerian_paths(graph, [node], [], unused_edges, solutions, True)
     return solutions
 
-def find_all_eulerian_cycles_starting_at_one_node(graph):
+def find_all_eulerian_cycles_starting_at_one_node(graph, start_node):
     solutions = []
     if nx.is_eulerian(graph):
         unused_edges = deepcopy(graph)
-        start_node = list(graph.nodes)[0]
         find_eulerian_paths(graph, [start_node], [], unused_edges, solutions, True)
     return solutions
 
@@ -124,10 +123,9 @@ def find_all_hamiltonian_cycles(graph):
         find_hamiltonian_paths(graph, [node], [], list(graph.nodes), unused_edges, solutions, True)
     return solutions
 
-def find_all_hamiltonian_cycles_starting_at_one_node(graph):
+def find_all_hamiltonian_cycles_starting_at_one_node(graph, start_node):
     solutions = []
     unused_edges = deepcopy(graph)
-    start_node = list(graph.nodes)[0]
     find_hamiltonian_paths(graph, [start_node], [], list(graph.nodes), unused_edges, solutions, True)
     return solutions
 
@@ -138,7 +136,7 @@ def find_all_hamiltonian_paths(graph):
         find_hamiltonian_paths(graph, [node], [], list(graph.nodes), unused_edges, solutions)
     return solutions
 
-def find_all_hamiltonian_paths_starting_at_one_node(graph):
+def find_all_hamiltonian_paths_starting_at_one_node(graph, start_node):
     solutions = []
     for node in graph.nodes:
         unused_edges = deepcopy(graph)

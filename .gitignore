@@ -204,3 +204,7 @@ poetry.toml
 pyrightconfig.json
 
 site/
+
+###### Custom #######
+main.py
+.python-version

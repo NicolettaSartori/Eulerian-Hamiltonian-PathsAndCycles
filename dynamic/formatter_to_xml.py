@@ -23,7 +23,8 @@ ensuring the variables are added in the appropriate format.
 """
 
 def escape_html(s):
-    return s.replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
+    # IMPORTANT: Escape ampersand first to avoid double-escaping
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")
 
 def format_single_input_to_xml(name, input_str, current_id):
     """

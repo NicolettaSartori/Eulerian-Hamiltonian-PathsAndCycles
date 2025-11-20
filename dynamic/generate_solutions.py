@@ -136,10 +136,102 @@ def find_all_hamiltonian_paths(graph):
         find_hamiltonian_paths(graph, [node], [], list(graph.nodes), unused_edges, solutions)
     return solutions
 
-def find_all_hamiltonian_paths_starting_at_one_node(graph, start_node):
+def find_all_hamiltonian_paths_starting_at_one_node(graph, start_node, cycles=False):
     solutions = []
-    for node in graph.nodes:
-        unused_edges = deepcopy(graph)
-        find_hamiltonian_paths(graph, [node], [], list(graph.nodes), unused_edges, solutions)
-        if len(solutions) > 0: break
+    unused_edges = deepcopy(graph)
+    find_hamiltonian_paths(graph, [start_node], [], list(graph.nodes), unused_edges, solutions, cycles)
     return solutions
+
+# Node-based Hamiltonian path enumeration (returns sequences of node indices instead of edge labels)
+def _dfs_hamiltonian_nodes(graph, path, unused_nodes, solutions, cycles):
+    if cycles and len(unused_nodes) == 0:
+        if path[0] == path[-1]:
+            solutions.append(path.copy())
+        return
+    elif not cycles and len(unused_nodes) == 1 and path[0] == unused_nodes[0]:
+        solutions.append(path.copy())
+        return
+
+    current = path[-1]
+    for neighbor in graph.neighbors(current):
+        if neighbor in unused_nodes:
+            path.append(neighbor)
+            unused_nodes.remove(neighbor)
+            _dfs_hamiltonian_nodes(graph, path, unused_nodes, solutions, cycles)
+            unused_nodes.append(neighbor)
+            path.pop()
+
+def find_all_hamiltonian_node_paths_starting_at_one_node(graph, start_node, cycles=False):
+    solutions = []
+    _dfs_hamiltonian_nodes(graph, [start_node], list(graph.nodes), solutions, cycles)
+    return solutions
+
+
+def generate_wrong_paths(graph, valid_solutions, num_wrong=2):
+    """Generate plausible but incorrect paths for multiple choice questions
+    
+    Args:
+        graph: NetworkX graph
+        valid_solutions: List of valid solutions (as lists of node indices)
+        num_wrong: Number of wrong paths to generate
+    
+    Returns:
+        List of wrong path solutions
+    """
+    wrong_paths = []
+    nodes = list(graph.nodes)
+    edges = list(graph.edges(keys=True))
+    
+    # Strategy 1: Remove the last node from valid solutions (incomplete paths)
+    for solution in valid_solutions:
+        if len(solution) > 2:
+            incomplete_path = solution[:-1]
+            if incomplete_path not in wrong_paths and incomplete_path not in valid_solutions:
+                wrong_paths.append(incomplete_path)
+                if len(wrong_paths) >= num_wrong:
+                    return wrong_paths
+    
+    # Strategy 2: Swap two consecutive nodes
+    for solution in valid_solutions:
+        if len(solution) > 2:
+            for i in range(len(solution) - 1):
+                swapped = solution.copy()
+                swapped[i], swapped[i+1] = swapped[i+1], swapped[i]
+                if swapped not in wrong_paths and swapped not in valid_solutions:
+                    # Check if it's still a valid path (connected)
+                    if all(graph.has_edge(swapped[j], swapped[j+1]) for j in range(len(swapped)-1)):
+                        wrong_paths.append(swapped)
+                        if len(wrong_paths) >= num_wrong:
+                            return wrong_paths
+    
+    # Strategy 3: Add a random node in the middle
+    for solution in valid_solutions:
+        if len(solution) > 1:
+            for i in range(1, len(solution)):
+                for node in nodes:
+                    if node not in solution:
+                        modified = solution[:i] + [node] + solution[i:]
+                        if modified not in wrong_paths and modified not in valid_solutions:
+                            # Check connectivity
+                            if all(graph.has_edge(modified[j], modified[j+1]) for j in range(len(modified)-1)):
+                                wrong_paths.append(modified)
+                                if len(wrong_paths) >= num_wrong:
+                                    return wrong_paths
+    
+    # Strategy 4: Random valid-looking paths that start from the same node
+    from random import choice, sample
+    for _ in range(num_wrong * 2):
+        if len(wrong_paths) >= num_wrong:
+            break
+        path = [nodes[0]]
+        for _ in range(len(nodes) - 1):
+            neighbors = [n for n in graph.neighbors(path[-1])]
+            if neighbors:
+                path.append(choice(neighbors))
+            else:
+                break
+        if path not in wrong_paths and path not in valid_solutions:
+            wrong_paths.append(path)
+    
+    return wrong_paths[:num_wrong]
+

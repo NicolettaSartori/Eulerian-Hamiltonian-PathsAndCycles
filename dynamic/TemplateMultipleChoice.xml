@@ -1,0 +1,18 @@
+<Exercise id="1">
+  <name>{title}</name>
+  <internalNotes></internalNotes>
+  <language>en</language>
+  <difficulty>0</difficulty>
+  <tags id="2"/>
+  <resources id="3"/>
+  <stages id="4">
+    {stage}
+  </stages>
+  <startStage class="MCStage" reference="5"/>
+  <variableDeclarations id="33">
+     {variable_declarations}
+  </variableDeclarations>
+  <jSXGraphs id="44"/>
+  <dynamicMolecules id="45"/>
+  <resultFeedbackMappings id="46"/>
+</Exercise>

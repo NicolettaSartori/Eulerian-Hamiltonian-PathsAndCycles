@@ -5,6 +5,7 @@ import networkx as nx
 import generate_solutions as gs
 from create_xml import format_variable_declaration, format_all_solutions, format_graphviz_graphs
 from create_xml import format_draggables
+from formatter_html import format_list
 from gviz import nx_to_graphviz
 
 graphs = [
@@ -40,12 +41,21 @@ def export_exercise(generate_fn, title, article, type, filename):
 
     variable_declarations = format_all_solutions("all_solutions", id, all_solutions)
     variable_declarations += format_variable_declaration("variant", id + 2,
-                                                         "randomIntegerBetween(0,sizeOfList([var=all_solutions]))")
+                                                         "randomIntegerBetween(0,sizeOfList([var=all_solutions]) - 1)")
     variable_declarations += format_variable_declaration("active_solutions", id + 4,
                                                          "getFromList([var=variant], [var=all_solutions])")
     variable_declarations += format_graphviz_graphs("graphs", id + 6, graphviz_graphs)
     variable_declarations += format_variable_declaration("graph", id + 8, "getFromList([var=variant], [var=graphs])")
     variable_declarations += format_variable_declaration("start_node", id + 10, f"'{chr(ord('A') + start_node - 1)}'")
+
+    all_solutions_html = [format_list(sols) for sols in all_solutions]
+    all_solutions_html = "{ " + "; ".join(("'" + s.replace("'", "\\'") + "'") for s in all_solutions_html) + " }"
+    variable_declarations += format_variable_declaration("all_solutions_html", id + 12, all_solutions_html)
+    variable_declarations += format_variable_declaration(
+        "feedback_solutions",
+        id + 14,
+        "getFromList([var=variant], [var=all_solutions_html])"
+    )
 
     # Get the directory where this script is located
     SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -55,12 +65,14 @@ def export_exercise(generate_fn, title, article, type, filename):
 
     with open(template_path, 'r') as file:
         content = file.read()
+        # replace the placeholders in the template
         content = content.format(
             variable_declarations=variable_declarations,
             draggables=format_draggables("a", 27, max_num_edges),
             title=title,
             article=article,
-            type=type)
+            type=type,
+        )
         with open(output_path, 'w') as file:
             file.write(content)
 

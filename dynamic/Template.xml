@@ -33,7 +33,7 @@ Start at node [var=start_node]. If there is no {type} in this graph, leave the b
             <code>1</code>
             <domain>MATH</domain>
           </validationExpression>
-          <feedbackText>&lt;div&gt;Incorrect.&lt;/div&gt;</feedbackText>
+          <feedbackText>&lt;div&gt;Incorrect.&lt;/div&gt;&lt;div&gt; &lt;/div&gt;&lt;div&gt;Solution: [var=feedback_solutions]&lt;/div&gt;</feedbackText>
           <points>0</points>
           <terminal>false</terminal>
           <fieldsToBeMarked id="12"/>

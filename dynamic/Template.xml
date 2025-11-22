@@ -60,7 +60,7 @@ Start at node [var=start_node]. If there is no {type} in this graph, leave the b
       <variableUpdatesOnSkip id="24"/>
       <weight>1</weight>
       <orderIndex>0</orderIndex>
-      <allowSkip>false</allowSkip>
+      <allowSkip>true</allowSkip>
       <resources id="25"/>
       <imageURL></imageURL>
       <imageWidth>0</imageWidth>

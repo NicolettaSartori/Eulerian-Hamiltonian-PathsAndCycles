@@ -41,7 +41,7 @@ def export_exercise(generate_fn, title, article, type, filename):
 
     variable_declarations = format_all_solutions("all_solutions", id, all_solutions)
     variable_declarations += format_variable_declaration("variant", id + 2,
-                                                         "randomIntegerBetween(0,sizeOfList([var=all_solutions]) - 1)")
+                                                         "randomIntegerBetween(0,sizeOfList([var=all_solutions]))")
     variable_declarations += format_variable_declaration("active_solutions", id + 4,
                                                          "getFromList([var=variant], [var=all_solutions])")
     variable_declarations += format_graphviz_graphs("graphs", id + 6, graphviz_graphs)

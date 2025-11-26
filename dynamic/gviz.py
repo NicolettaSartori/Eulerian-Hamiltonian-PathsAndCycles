@@ -111,3 +111,50 @@ def nx_to_graphviz_with_marked_path(nx_graph, path=[], labeled_edges=False, labe
 
     return g
 
+def nx_to_graphviz_one_directed_edge(nx_graph, labeled_edges=False, labeled_nodes=True, start_node=None, combos=None):
+    g = graphviz.Graph(engine="neato", graph_attr={"overlap": "prism", "overlap_scaling": "-3", "splines": "true", "nodesep": "0.5"})
+    g.attr("graph", center="True")
+
+    for node in nx_graph.nodes():
+        if labeled_nodes:
+            if node == start_node:
+                g.node(str(node), label=f"{chr(ord("A") + node - 1)}\n(Start)", shape="circle", penwidth="4",
+                fixedsize="true", width="0.75", height="0.75")
+            else:
+                g.node(str(node), label=chr(ord("A") + node - 1), shape="circle", fixedsize="true",
+                     width="0.75", height="0.75")
+        else:
+            g.node(str(node), label="", shape="circle", fixedsize="true", width="0.75", height="0.75")
+
+    idx = 0
+    for edge in nx_graph.edges():
+        if labeled_edges:
+            if (edge[0], edge[1]) in combos:
+                g.edge(str(edge[0]), str(edge[1]), taillabel=chr(ord("a") + idx), labeldistance="1.5",
+                       dir="forward", arrowhead="normal")
+            else:
+                g.edge(str(edge[0]), str(edge[1]), taillabel=chr(ord("a") + idx), labeldistance="1.5")
+
+            idx += 1
+        else:
+            g.edge(str(edge[0]), str(edge[1]))
+
+    return g
+
+def nx_to_graphviz_special_nodes(nx_graph, special_nodes):
+    g = graphviz.Graph(engine="neato", graph_attr={"overlap": "prism", "overlap_scaling": "-3", "splines": "true", "nodesep": "0.5"})
+
+    g.attr("graph", center="True")
+
+    i = 1
+    for node in nx_graph.nodes():
+        if node in special_nodes:
+            g.node(str(node), label=str(i), shape="circle", fixedsize="true", width="0.75", height="0.75", style="dashed")
+            i+=1
+        else:
+            g.node(str(node), label="", shape="circle", fixedsize="true", width="0.75", height="0.75")
+
+    for edge in nx_graph.edges():
+        g.edge(str(edge[0]), str(edge[1]))
+
+    return g

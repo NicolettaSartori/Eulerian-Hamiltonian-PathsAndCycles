@@ -129,6 +129,124 @@ def find_all_hamiltonian_cycles_starting_at_one_node(graph, start_node):
     find_hamiltonian_paths(graph, [start_node], [], list(graph.nodes), unused_edges, solutions, True)
     return solutions
 
+def _direction_allowed(u, v, directed_edges):
+    """
+    directed_edges: set of (u, v) pairs meaning 'u -> v is allowed; v -> u is forbidden'.
+
+    Rules:
+    - if neither (u, v) nor (v, u) in directed_edges: treat as undirected -> allowed
+    - if (u, v) in directed_edges: u -> v allowed
+    - if (v, u) in directed_edges but not (u, v): u -> v forbidden
+    """
+    if not directed_edges:
+        # no constraints at all
+        return True
+
+    if (u, v) in directed_edges:
+        return True
+
+    if (v, u) in directed_edges:
+        return False
+
+    # unconstrained edge = undirected behaviour
+    return True
+
+
+def find_hamiltonian_paths_with_directed_edges(
+    graph,
+    node_path,
+    edge_path,
+    unused_nodes,
+    unused_edges,
+    solutions,
+    directed_edges,
+    cycles=False,
+):
+    # ---- End conditions ----
+    if cycles and len(unused_nodes) == 0:
+        # Hamiltonian cycle: all nodes used and path closes
+        if node_path[0] == node_path[-1]:
+            solutions.append(edges_to_chars(graph, edge_path))
+        return
+
+    elif (not cycles) and len(unused_nodes) == 1 and node_path[0] == unused_nodes[0]:
+        # Hamiltonian path variant (if you ever use it)
+        solutions.append(edges_to_chars(graph, edge_path))
+        return
+
+    current_node = node_path[-1]
+
+    for neighbor in graph.neighbors(current_node):
+        if neighbor in unused_nodes and unused_edges.has_edge(current_node, neighbor):
+
+            # respect direction constraints
+            if not _direction_allowed(current_node, neighbor, directed_edges):
+                continue
+
+            for key in parallel_edge_keys(unused_edges, current_node, neighbor):
+                node_path.append(neighbor)
+                edge_path.append((current_node, neighbor, key))
+
+                new_unused_edges = deepcopy(unused_edges)
+                # remove the used edge
+                if isinstance(new_unused_edges, (nx.MultiGraph, nx.MultiDiGraph)):
+                    new_unused_edges.remove_edge(current_node, neighbor, key)
+                else:
+                    new_unused_edges.remove_edge(current_node, neighbor)
+
+                unused_nodes.remove(neighbor)
+
+                find_hamiltonian_paths_with_directed_edges(
+                    graph,
+                    node_path,
+                    edge_path,
+                    unused_nodes,
+                    new_unused_edges,
+                    solutions,
+                    directed_edges,
+                    cycles,
+                )
+
+                # backtrack
+                unused_nodes.append(neighbor)
+                node_path.pop()
+                edge_path.pop()
+
+
+def find_all_hamiltonian_cycles_starting_at_one_node_with_directed_edges(
+    graph,
+    directed_edges,
+    start_node,
+):
+    """
+    graph: nx.Graph or nx.MultiGraph
+    directed_edges: iterable of (u, v) pairs (u -> v allowed direction)
+    start_node: starting vertex for the cycle search
+    """
+    solutions = []
+    unused_edges = deepcopy(graph)
+
+    # IMPORTANT: include *all* nodes, including start_node
+    unused_nodes = list(graph.nodes())
+
+    # Use a set for fast lookup
+    directed_edge_set = set(directed_edges)
+
+    find_hamiltonian_paths_with_directed_edges(
+        graph=graph,
+        node_path=[start_node],
+        edge_path=[],
+        unused_nodes=unused_nodes,
+        unused_edges=unused_edges,
+        solutions=solutions,
+        directed_edges=directed_edge_set,
+        cycles=True,
+    )
+
+    return solutions
+
+
+
 def find_all_hamiltonian_paths(graph):
     solutions = []
     for node in graph.nodes:
@@ -235,3 +353,30 @@ def generate_wrong_paths(graph, valid_solutions, num_wrong=2):
     
     return wrong_paths[:num_wrong]
 
+def find_nodes_to_make_hamiltonian_cycle_impossible(graph, removed_nodes):
+    n1, n2, n3 = removed_nodes
+
+    # If the original graph already has no Hamiltonian cycle, return 0.
+    if not find_all_hamiltonian_cycles(graph):
+        return 0
+
+    tests = [
+        (1, [n1]),              # only first
+        (2, [n2]),              # only second
+        (3, [n3]),              # only third
+        (4, [n1, n2]),          # first & second
+        (5, [n1, n3]),          # first & third
+        (6, [n2, n3]),          # second & third
+        (7, [n1, n2, n3]),      # all three
+    ]
+
+    for code, nodes_to_remove in tests:
+        g_reduced = graph.copy()
+        g_reduced.remove_nodes_from(nodes_to_remove)
+
+        # If there are no Hamiltonian cycles left after removing these nodes:
+        if not find_all_hamiltonian_cycles(g_reduced):
+            return code
+
+    # If none of these removals kills all Hamiltonian cycles, return 0.
+    return 0

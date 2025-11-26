@@ -27,6 +27,27 @@ graphs = [
 
 start_node = 1
 
+def add_multiple_choice_solutions(id, all_solutions):
+    variable_declarations = ''
+    correct_solutions_list = []
+    for i in range(len(all_solutions)):
+        correct_solutions_list.append([1 if j == all_solutions[i] else 0 for j in range(1, 8)])
+
+    inner_lists = []
+    for sub in correct_solutions_list:
+        sub_inner = "; ".join(f"'{x}'" for x in sub)
+        inner_lists.append("{ " + sub_inner + " }")
+    correct_solutions_list = "{ " + "; ".join(inner_lists) + " }"
+    correct_solutions_list = correct_solutions_list.replace("'", "")
+
+    variable_declarations += format_variable_declaration("correct_solutions_list", id + 15, correct_solutions_list)
+    variable_declarations += format_variable_declaration(
+        "is_correct_solution_1",
+        id + 16,
+        "getFromList(0, getFromList([var=variant], [var=correct_solutions_list]))"
+    )
+    return variable_declarations
+
 def export_exercise_mc(generate_fn, question_generator, title, filename):
     """Export a multiple choice exercise ensuring each variant has a valid Hamiltonian path.
 

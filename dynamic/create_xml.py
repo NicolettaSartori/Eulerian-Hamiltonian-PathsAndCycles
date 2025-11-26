@@ -375,5 +375,21 @@ def format_mc_stage_dynamic_tf(question_text, num_answers, start_id, stage_id=5)
     </MCStage>
 ''', start_id + num_answers + 122
 
+def format_numbers_to_multiple_choice(nodes):
+    if nodes == 1:
+        return "1"
+    if nodes == 2:
+        return "2"
+    if nodes == 3:
+        return "3"
+    if nodes == 4:
+        return "1 and 2"
+    if nodes == 5:
+        return "1 and 3"
+    if nodes == 6:
+        return "2 and 3"
+    if nodes == 7:
+        return "1, 2 and 3"
+    return None
 
 

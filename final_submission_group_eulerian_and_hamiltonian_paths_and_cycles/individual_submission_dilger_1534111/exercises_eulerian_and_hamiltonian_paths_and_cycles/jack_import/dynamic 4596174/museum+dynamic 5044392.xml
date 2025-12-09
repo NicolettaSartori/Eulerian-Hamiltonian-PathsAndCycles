@@ -1,5 +1,5 @@
 <Exercise id="1">
-  <name>museum</name>
+  <name>museum dynamic</name>
   <internalNotes></internalNotes>
   <language>en</language>
   <difficulty>0</difficulty>
@@ -20,36 +20,8 @@
       <feedbackRules id="6">
         <FeedbackRule id="7">
           <name>Feedback </name>
-          <orderIndex>3</orderIndex>
-          <validationExpression id="8">
-            <code>1</code>
-            <domain>MATH</domain>
-          </validationExpression>
-          <feedbackText>&lt;div&gt;&#xd;
-&lt;div&gt;Incorrect.&lt;/div&gt;&#xd;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;&#xd;
-&lt;div&gt;Solution: [var=feedback_solutions]&lt;/div&gt;&#xd;
-&lt;/div&gt;</feedbackText>
-          <points>0</points>
-          <terminal>true</terminal>
-          <fieldsToBeMarked id="9"/>
-        </FeedbackRule>
-        <FeedbackRule id="10">
-          <name>Feedback </name>
-          <orderIndex>2</orderIndex>
-          <validationExpression id="11">
-            <code>evaluateInR(&quot;any(sapply([var=active_solutions], identical, y = [input=Route]))&quot;)</code>
-            <domain>MATH</domain>
-          </validationExpression>
-          <feedbackText>&lt;div&gt;Correct.&lt;/div&gt;</feedbackText>
-          <points>100</points>
-          <terminal>true</terminal>
-          <fieldsToBeMarked id="12"/>
-        </FeedbackRule>
-        <FeedbackRule id="13">
-          <name>Feedback </name>
           <orderIndex>1</orderIndex>
-          <validationExpression id="14">
+          <validationExpression id="8">
             <code>evaluateInR(&quot;
   order &lt;- [input=Route]
   order[1] != &apos;A&apos;
@@ -61,19 +33,43 @@
 &lt;div&gt;You have to start at the entrance.&lt;/div&gt;</feedbackText>
           <points>0</points>
           <terminal>true</terminal>
+          <fieldsToBeMarked id="9"/>
+        </FeedbackRule>
+        <FeedbackRule id="10">
+          <name>Feedback </name>
+          <orderIndex>0</orderIndex>
+          <validationExpression id="11">
+            <code>sizeOfList([input=Route]) &lt; 5</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;Incorrect. You have to use every draggable.&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="12"/>
+        </FeedbackRule>
+        <FeedbackRule id="13">
+          <name>Feedback </name>
+          <orderIndex>3</orderIndex>
+          <validationExpression id="14">
+            <code>1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Solution: [var=feedback_solutions]&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
           <fieldsToBeMarked id="15"/>
         </FeedbackRule>
         <FeedbackRule id="16">
           <name>Feedback </name>
-          <orderIndex>0</orderIndex>
+          <orderIndex>2</orderIndex>
           <validationExpression id="17">
-            <code>sizeOfList([input=Route]) &lt; 5</code>
+            <code>evaluateInR(&quot;any(sapply([var=active_solutions], identical, y = [input=Route]))&quot;)</code>
             <domain>MATH</domain>
           </validationExpression>
-          <feedbackText>&lt;div&gt;Incorrect.&lt;/div&gt;&#xd;
-&lt;div&gt;&amp;nbsp;&lt;/div&gt;&#xd;
-&lt;div&gt;You have to use every draggable.&lt;/div&gt;</feedbackText>
-          <points>0</points>
+          <feedbackText>&lt;div&gt;Correct.&lt;/div&gt;</feedbackText>
+          <points>100</points>
           <terminal>true</terminal>
           <fieldsToBeMarked id="18"/>
         </FeedbackRule>

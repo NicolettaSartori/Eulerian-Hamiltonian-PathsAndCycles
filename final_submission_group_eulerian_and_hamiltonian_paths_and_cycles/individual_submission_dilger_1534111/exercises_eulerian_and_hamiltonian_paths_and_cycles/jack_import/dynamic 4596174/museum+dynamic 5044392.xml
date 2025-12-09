@@ -11,7 +11,7 @@
       <externalName>Subtask 1</externalName>
       <taskDescription>&lt;div&gt;You are a museum tour guide planning routes through the exhibits. The museum has one-way hallways (shown by arrows) connecting different exhibits.&lt;/div&gt;
 &lt;div&gt;&amp;nbsp;&lt;/div&gt;
-&lt;div&gt;A valid tour route must visit each exhibit exactly once, following the direction of the hallways.&lt;/div&gt;
+&lt;div&gt;A valid tour route must visit each exhibit exactly once, following the direction of the hallways and starting and the entrance.&lt;/div&gt;
 &lt;div&gt;&amp;nbsp;&lt;/div&gt;
 &lt;div&gt;[var=graph]&lt;/div&gt;
 &lt;div&gt;&amp;nbsp;&lt;/div&gt;
@@ -20,8 +20,34 @@
       <feedbackRules id="6">
         <FeedbackRule id="7">
           <name>Feedback </name>
-          <orderIndex>1</orderIndex>
+          <orderIndex>3</orderIndex>
           <validationExpression id="8">
+            <code>1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Solution: [var=feedback_solutions]&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="9"/>
+        </FeedbackRule>
+        <FeedbackRule id="10">
+          <name>Feedback </name>
+          <orderIndex>2</orderIndex>
+          <validationExpression id="11">
+            <code>evaluateInR(&quot;any(sapply([var=active_solutions], identical, y = [input=Route]))&quot;)</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;Correct.&lt;/div&gt;</feedbackText>
+          <points>100</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="12"/>
+        </FeedbackRule>
+        <FeedbackRule id="13">
+          <name>Feedback </name>
+          <orderIndex>1</orderIndex>
+          <validationExpression id="14">
             <code>evaluateInR(&quot;
   order &lt;- [input=Route]
   order[1] != &apos;A&apos;
@@ -33,43 +59,17 @@
 &lt;div&gt;You have to start at the entrance.&lt;/div&gt;</feedbackText>
           <points>0</points>
           <terminal>true</terminal>
-          <fieldsToBeMarked id="9"/>
+          <fieldsToBeMarked id="15"/>
         </FeedbackRule>
-        <FeedbackRule id="10">
+        <FeedbackRule id="16">
           <name>Feedback </name>
           <orderIndex>0</orderIndex>
-          <validationExpression id="11">
+          <validationExpression id="17">
             <code>sizeOfList([input=Route]) &lt; 5</code>
             <domain>MATH</domain>
           </validationExpression>
           <feedbackText>&lt;div&gt;Incorrect. You have to use every draggable.&lt;/div&gt;</feedbackText>
           <points>0</points>
-          <terminal>true</terminal>
-          <fieldsToBeMarked id="12"/>
-        </FeedbackRule>
-        <FeedbackRule id="13">
-          <name>Feedback </name>
-          <orderIndex>3</orderIndex>
-          <validationExpression id="14">
-            <code>1</code>
-            <domain>MATH</domain>
-          </validationExpression>
-          <feedbackText>&lt;div&gt;&#xd;
-&lt;div&gt;Incorrect. Solution: [var=feedback_solutions]&lt;/div&gt;&#xd;
-&lt;/div&gt;</feedbackText>
-          <points>0</points>
-          <terminal>true</terminal>
-          <fieldsToBeMarked id="15"/>
-        </FeedbackRule>
-        <FeedbackRule id="16">
-          <name>Feedback </name>
-          <orderIndex>2</orderIndex>
-          <validationExpression id="17">
-            <code>evaluateInR(&quot;any(sapply([var=active_solutions], identical, y = [input=Route]))&quot;)</code>
-            <domain>MATH</domain>
-          </validationExpression>
-          <feedbackText>&lt;div&gt;Correct.&lt;/div&gt;</feedbackText>
-          <points>100</points>
           <terminal>true</terminal>
           <fieldsToBeMarked id="18"/>
         </FeedbackRule>

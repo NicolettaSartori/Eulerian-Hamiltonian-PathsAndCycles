@@ -1,0 +1,404 @@
+<Exercise id="1">
+  <name>matching_and_ordering</name>
+  <internalNotes></internalNotes>
+  <language>en</language>
+  <difficulty>0</difficulty>
+  <tags id="2"/>
+  <resources id="3"/>
+  <stages id="4">
+    <DNDTextStage id="5">
+      <internalName>#1</internalName>
+      <externalName>Graphs by Hamiltonian Cycle Count</externalName>
+      <taskDescription>&lt;div&gt;&lt;strong&gt;Order these graph types from 0 to most Hamiltonian cycles.&lt;/strong&gt;&lt;/div&gt;
+&lt;div&gt;&lt;strong&gt;&lt;input style=&quot;width: 100%; height: 200px;&quot; disabled=&quot;disabled&quot; name=&quot;draggable-pool&quot; type=&quot;text&quot; value=&quot;draggable_pool_1&quot;&gt;&lt;input style=&quot;width: 100%; height: 300px;&quot; disabled=&quot;disabled&quot; name=&quot;drop-area&quot; type=&quot;text&quot; value=&quot;drop_area_1&quot;&gt;&lt;/strong&gt;&lt;/div&gt;</taskDescription>
+      <feedbackRules id="6">
+        <FeedbackRule id="7">
+          <name>Feedback </name>
+          <orderIndex>3</orderIndex>
+          <validationExpression id="8">
+            <code>ifthenelse(equals(getFromList(3, [input=drop_area_1]), &apos;C&apos;), 0, 1) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Complete graph $K_5$ (C) should be last as it has the most Hamiltonian cycles (12 cycles). The cycle graph $C_6$ (B) has fewer (exactly 2 cycles).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A (or D) $\to$ D (or A) $\to$ B $\to$ C&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="9"/>
+        </FeedbackRule>
+        <FeedbackRule id="10">
+          <name>Feedback </name>
+          <orderIndex>2</orderIndex>
+          <validationExpression id="11">
+            <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;B&apos;), 1, ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;C&apos;), 1, ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;B&apos;), 1, ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;C&apos;), 1, 0)))) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Neither B (cycle graph $C_6$) nor C (complete graph $K_5$) should be in the first two positions. Both star graphs and path graphs have zero Hamiltonian cycles, so A and D belong at the start.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A (or D) $\to$ D (or A) $\to$ B $\to$ C&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="12"/>
+        </FeedbackRule>
+        <FeedbackRule id="13">
+          <name>Feedback </name>
+          <orderIndex>5</orderIndex>
+          <validationExpression id="14">
+            <code>evaluateInR(&quot;
+  input &lt;- [input=drop_area_1]
+  (input[[3]] %in% c(&apos;A&apos;,&apos;D&apos;)) || (input[[4]] %in% c(&apos;A&apos;,&apos;D&apos;))
+&quot;)</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Both A (star graph with 5 leaves) and D (path graph with 6 vertices) have zero Hamiltonian cycles and should be in the first two positions. Star graphs lack the necessary connections, and path graphs cannot close into cycles.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A (or D) $\to$ D (or A) $\to$ B $\to$ C&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="15"/>
+        </FeedbackRule>
+        <FeedbackRule id="16">
+          <name>Feedback </name>
+          <orderIndex>4</orderIndex>
+          <validationExpression id="17">
+            <code>evaluateInR(&quot;
+  input &lt;- [input=drop_area_1]
+  first_two &lt;- sort(c(input[[1]], input[[2]]))
+  correct_first_two &lt;- c(&apos;A&apos;, &apos;D&apos;)
+  identical(first_two, correct_first_two) &amp;&amp; input[[4]] == &apos;C&apos; &amp;&amp; input[[3]] != &apos;B&apos;
+&quot;)</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. You correctly identified that A and D have zero cycles and C has the most, but the third position should be B (cycle graph $C_6$), which has exactly 2 Hamiltonian cycles.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A (or D) $\to$ D (or A) $\to$ B $\to$ C&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="18"/>
+        </FeedbackRule>
+        <FeedbackRule id="19">
+          <name>Feedback </name>
+          <orderIndex>1</orderIndex>
+          <validationExpression id="20">
+            <code>evaluateInR(&quot;any(sapply([var=all_correct_sequences], identical, y = [input=drop_area_1]))&quot;)</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Both star graphs and path graphs have zero Hamiltonian cycles (A and D can be in either order). The cycle graph $C_6$ has exactly 2 Hamiltonian cycles. The complete graph $K_5$ has the most with 12 Hamiltonian cycles.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A (or D) $\to$ D (or A) $\to$ B $\to$ C&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>100</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="21"/>
+        </FeedbackRule>
+        <FeedbackRule id="22">
+          <name>Feedback </name>
+          <orderIndex>0</orderIndex>
+          <validationExpression id="23">
+            <code>sizeOfList([input=drop_area_1]) &lt; 4</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incomplete. You must arrange all 4 graph types in the drop area.&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="24"/>
+        </FeedbackRule>
+      </feedbackRules>
+      <defaultTransition id="25">
+        <conditionExpression id="26">
+          <domain>MATH</domain>
+        </conditionExpression>
+        <stageExpression id="27">
+          <domain>MATH</domain>
+        </stageExpression>
+        <targetStage class="DNDTextStage" id="28">
+          <internalName>#2</internalName>
+          <externalName>Hamiltonian Likelihood Ordering</externalName>
+          <taskDescription>&lt;div&gt;Order these graphs from most likely to least likely to have a Hamiltonian cycle based on their structural properties.&lt;/div&gt;
+&lt;div&gt;&lt;input style=&quot;width: 100%; height: 200px;&quot; disabled=&quot;disabled&quot; name=&quot;draggable-pool&quot; type=&quot;text&quot; value=&quot;draggable_pool_1&quot;&gt;&lt;/div&gt;
+&lt;div&gt;&lt;input style=&quot;width: 100%; height: 300px;&quot; disabled=&quot;disabled&quot; name=&quot;drop-area&quot; type=&quot;text&quot; value=&quot;drop_area_1&quot;&gt;&lt;/div&gt;</taskDescription>
+          <feedbackRules id="29">
+            <FeedbackRule id="30">
+              <name>Feedback </name>
+              <orderIndex>0</orderIndex>
+              <validationExpression id="31">
+                <code>sizeOfList([input=drop_area_1]) &lt; 4</code>
+                <domain>MATH</domain>
+              </validationExpression>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incomplete. You must arrange all 4 graph types in the drop area.&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+              <points>0</points>
+              <terminal>true</terminal>
+              <fieldsToBeMarked id="32"/>
+            </FeedbackRule>
+            <FeedbackRule id="33">
+              <name>Feedback </name>
+              <orderIndex>2</orderIndex>
+              <validationExpression id="34">
+                <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;A&apos;), 0, 1) == 1</code>
+                <domain>MATH</domain>
+              </validationExpression>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Your first position is wrong. Complete graph $K_{10}$ (A) should be first as it has the highest likelihood of having a Hamiltonian cycle. Every complete graph $K_n$ for $n \geq 3$ is guaranteed to have Hamiltonian cycles.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A $\to$ C $\to$ D $\to$ B&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+              <points>0</points>
+              <terminal>true</terminal>
+              <fieldsToBeMarked id="35"/>
+            </FeedbackRule>
+            <FeedbackRule id="36">
+              <name>Feedback </name>
+              <orderIndex>1</orderIndex>
+              <validationExpression id="37">
+                <code>equalList([input=drop_area_1], [var=correctSequence])</code>
+                <domain>MATH</domain>
+              </validationExpression>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Complete graph $K_{10}$ (A) is guaranteed to have Hamiltonian cycles by Dirac&apos;s theorem. The graph with minimum degree 5 (C) also satisfies Dirac&apos;s theorem ($\delta \geq n/2$). The sparse random graph (D) may or may not have a Hamiltonian cycle. Trees (B) can never have Hamiltonian cycles as they contain no cycles at all.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A $\to$ C $\to$ D $\to$ B&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+              <points>100</points>
+              <terminal>true</terminal>
+              <fieldsToBeMarked id="38"/>
+            </FeedbackRule>
+            <FeedbackRule id="39">
+              <name>Feedback </name>
+              <orderIndex>4</orderIndex>
+              <validationExpression id="40">
+                <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;A&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;C&apos;), ifthenelse(equals(getFromList(2, [input=drop_area_1]), &apos;D&apos;), 0, 1), 0), 0) == 1</code>
+                <domain>MATH</domain>
+              </validationExpression>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Positions A and C are correct, but your third position is wrong. The random connected graph with 10 vertices and 12 edges (D) should be third. With only 12 edges, the average degree is $12/10 = 1.2$, which provides no theoretical guarantee but leaves open the possibility of a Hamiltonian cycle.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A $\to$ C $\to$ D $\to$ B&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+              <points>0</points>
+              <terminal>true</terminal>
+              <fieldsToBeMarked id="41"/>
+            </FeedbackRule>
+            <FeedbackRule id="42">
+              <name>Feedback </name>
+              <orderIndex>3</orderIndex>
+              <validationExpression id="43">
+                <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;A&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;C&apos;), 0, 1), 0) == 1</code>
+                <domain>MATH</domain>
+              </validationExpression>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Position A is correct, but your second position is wrong. After the complete graph (A), the graph with minimum degree 5 (C) should come next. By Dirac&apos;s theorem, a graph with $n$ vertices and minimum degree $\delta \geq n/2$ is guaranteed to have a Hamiltonian cycle. Since $\delta = 5$ and $n/2 = 5$, option C satisfies this condition.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A $\to$ C $\to$ D $\to$ B&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+              <points>0</points>
+              <terminal>true</terminal>
+              <fieldsToBeMarked id="44"/>
+            </FeedbackRule>
+            <FeedbackRule id="45">
+              <name>Feedback </name>
+              <orderIndex>5</orderIndex>
+              <validationExpression id="46">
+                <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;A&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;C&apos;), ifthenelse(equals(getFromList(2, [input=drop_area_1]), &apos;D&apos;), ifthenelse(equals(getFromList(3, [input=drop_area_1]), &apos;B&apos;), 0, 1), 0), 0), 0) == 1</code>
+                <domain>MATH</domain>
+              </validationExpression>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Positions A, C, and D are correct, but your fourth position is wrong. Trees (B) must be last. By definition, trees are acyclic structures with exactly $n-1$ edges for $n$ vertices. They cannot contain any cycles, including Hamiltonian cycles.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: A $\to$ C $\to$ D $\to$ B&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+              <points>0</points>
+              <terminal>true</terminal>
+              <fieldsToBeMarked id="47"/>
+            </FeedbackRule>
+          </feedbackRules>
+          <defaultTransition id="48">
+            <conditionExpression id="49">
+              <domain>MATH</domain>
+            </conditionExpression>
+            <stageExpression id="50">
+              <domain>MATH</domain>
+            </stageExpression>
+            <type>NEXT_OR_END</type>
+            <extraWeight>0</extraWeight>
+          </defaultTransition>
+          <skipTransitions id="51"/>
+          <stageTransitions id="52"/>
+          <hints id="53"/>
+          <variableUpdatesOnEnter id="54"/>
+          <variableUpdatesBeforeCheck id="55"/>
+          <variableUpdatesAfterCheck id="56"/>
+          <variableUpdatesOnNormalExit id="57"/>
+          <variableUpdatesOnRepeat id="58"/>
+          <variableUpdatesOnSkip id="59"/>
+          <weight>1</weight>
+          <orderIndex>1</orderIndex>
+          <allowSkip>true</allowSkip>
+          <resources id="60"/>
+          <draggables id="61">
+            <Draggable id="62">
+              <variableName>C</variableName>
+              <htmlContent>&lt;div&gt;C) Graph with minimum degree 5 and 10 vertices&lt;/div&gt;</htmlContent>
+              <pool id="63">
+                <variableName>draggable_pool_1</variableName>
+                <width>400</width>
+                <height>200</height>
+                <label></label>
+                <fullWidth>true</fullWidth>
+                <shuffleDraggables>false</shuffleDraggables>
+                <dndTextStage reference="28"/>
+              </pool>
+              <dragDirection>BOTH</dragDirection>
+              <numberOfDraggables>1</numberOfDraggables>
+              <infiniteDraggables>false</infiniteDraggables>
+              <dndTextStage reference="28"/>
+            </Draggable>
+            <Draggable id="64">
+              <variableName>B</variableName>
+              <htmlContent>&lt;div&gt;B) Tree with 10 vertices&lt;/div&gt;</htmlContent>
+              <pool reference="63"/>
+              <dragDirection>BOTH</dragDirection>
+              <numberOfDraggables>1</numberOfDraggables>
+              <infiniteDraggables>false</infiniteDraggables>
+              <dndTextStage reference="28"/>
+            </Draggable>
+            <Draggable id="65">
+              <variableName>A</variableName>
+              <htmlContent>&lt;div&gt;A) Complete graph $K_{10}$&lt;/div&gt;</htmlContent>
+              <pool reference="63"/>
+              <dragDirection>BOTH</dragDirection>
+              <numberOfDraggables>1</numberOfDraggables>
+              <infiniteDraggables>false</infiniteDraggables>
+              <dndTextStage reference="28"/>
+            </Draggable>
+            <Draggable id="66">
+              <variableName>D</variableName>
+              <htmlContent>&lt;div&gt;D) Random connected graph with 10 vertices and 12 edges&lt;/div&gt;</htmlContent>
+              <pool reference="63"/>
+              <dragDirection>BOTH</dragDirection>
+              <numberOfDraggables>1</numberOfDraggables>
+              <infiniteDraggables>false</infiniteDraggables>
+              <dndTextStage reference="28"/>
+            </Draggable>
+          </draggables>
+          <dropAreas id="67">
+            <DropArea id="68">
+              <variableName>drop_area_1</variableName>
+              <width>400</width>
+              <height>300</height>
+              <numberOfDraggables>4</numberOfDraggables>
+              <infiniteDraggables>false</infiniteDraggables>
+              <label></label>
+              <fullWidth>true</fullWidth>
+              <horizontalDraggableAlignment>false</horizontalDraggableAlignment>
+              <dndTextStage reference="28"/>
+            </DropArea>
+          </dropAreas>
+          <draggablePools id="69">
+            <DraggablePool reference="63"/>
+          </draggablePools>
+        </targetStage>
+        <type>NEXT_OR_END</type>
+        <extraWeight>0</extraWeight>
+      </defaultTransition>
+      <skipTransitions id="70"/>
+      <stageTransitions id="71"/>
+      <hints id="72"/>
+      <variableUpdatesOnEnter id="73"/>
+      <variableUpdatesBeforeCheck id="74"/>
+      <variableUpdatesAfterCheck id="75"/>
+      <variableUpdatesOnNormalExit id="76"/>
+      <variableUpdatesOnRepeat id="77"/>
+      <variableUpdatesOnSkip id="78"/>
+      <weight>1</weight>
+      <orderIndex>0</orderIndex>
+      <allowSkip>false</allowSkip>
+      <resources id="79"/>
+      <draggables id="80">
+        <Draggable id="81">
+          <variableName>C</variableName>
+          <htmlContent>&lt;div&gt;C) Complete graph $K_5$&lt;/div&gt;</htmlContent>
+          <pool id="82">
+            <variableName>draggable_pool_1</variableName>
+            <width>400</width>
+            <height>200</height>
+            <label></label>
+            <fullWidth>true</fullWidth>
+            <shuffleDraggables>false</shuffleDraggables>
+            <dndTextStage reference="5"/>
+          </pool>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="83">
+          <variableName>D</variableName>
+          <htmlContent>&lt;div&gt;D) Path graph with 6 vertices&lt;/div&gt;</htmlContent>
+          <pool reference="82"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="84">
+          <variableName>A</variableName>
+          <htmlContent>&lt;div&gt;A) Star graph with 5 leaves&lt;/div&gt;</htmlContent>
+          <pool reference="82"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="85">
+          <variableName>B</variableName>
+          <htmlContent>&lt;div&gt;B) Cycle graph $C_6$&lt;/div&gt;</htmlContent>
+          <pool reference="82"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+      </draggables>
+      <dropAreas id="86">
+        <DropArea id="87">
+          <variableName>drop_area_1</variableName>
+          <width>400</width>
+          <height>300</height>
+          <numberOfDraggables>4</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <label></label>
+          <fullWidth>true</fullWidth>
+          <horizontalDraggableAlignment>false</horizontalDraggableAlignment>
+          <dndTextStage reference="5"/>
+        </DropArea>
+      </dropAreas>
+      <draggablePools id="88">
+        <DraggablePool reference="82"/>
+      </draggablePools>
+    </DNDTextStage>
+    <DNDTextStage reference="28"/>
+  </stages>
+  <startStage class="DNDTextStage" reference="5"/>
+  <variableDeclarations id="89">
+    <VariableDeclaration id="90">
+      <name>all_correct_sequences</name>
+      <initializationCode id="91">
+        <code>list(list(&apos;A&apos;,&apos;D&apos;,&apos;B&apos;,&apos;C&apos;), list(&apos;D&apos;,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;))</code>
+        <domain>MATH</domain>
+      </initializationCode>
+    </VariableDeclaration>
+    <VariableDeclaration id="92">
+      <name>correctSequence</name>
+      <initializationCode id="93">
+        <code>list(&apos;A&apos;, &apos;C&apos;, &apos;D&apos;, &apos;B&apos;)</code>
+        <domain>MATH</domain>
+      </initializationCode>
+    </VariableDeclaration>
+  </variableDeclarations>
+  <jSXGraphs id="94"/>
+  <dynamicMolecules id="95"/>
+  <resultFeedbackMappings id="96"/>
+</Exercise>

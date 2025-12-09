@@ -1,0 +1,243 @@
+<Exercise id="1">
+  <name>hierholzer_sequence</name>
+  <internalNotes></internalNotes>
+  <language>en</language>
+  <difficulty>0</difficulty>
+  <tags id="2"/>
+  <resources id="3"/>
+  <stages id="4">
+    <DNDTextStage id="5">
+      <internalName>#2</internalName>
+      <externalName>Subtask 2</externalName>
+      <taskDescription>&lt;div&gt;&lt;strong&gt;Arrange the steps of Hierholzer&amp;rsquo;s algorithm in the correct order to find an&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Eulerian circuit&lt;/strong&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;input style=&quot;width: 100%; height: 200px;&quot; disabled=&quot;disabled&quot; name=&quot;draggable-pool&quot; type=&quot;text&quot; value=&quot;draggable_pool_1&quot;&gt;&lt;input style=&quot;width: 100%; height: 300px;&quot; disabled=&quot;disabled&quot; name=&quot;drop-area&quot; type=&quot;text&quot; value=&quot;drop_area_1&quot;&gt;&lt;/div&gt;</taskDescription>
+      <feedbackRules id="6">
+        <FeedbackRule id="7">
+          <name>Feedback </name>
+          <orderIndex>0</orderIndex>
+          <validationExpression id="8">
+            <code>sizeOfList([input=drop_area_1]) &lt; 5</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;Incomplete. You must arrange all 5 steps in the drop area.&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="9"/>
+        </FeedbackRule>
+        <FeedbackRule id="10">
+          <name>Feedback </name>
+          <orderIndex>6</orderIndex>
+          <validationExpression id="11">
+            <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;B&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;A&apos;), ifthenelse(equals(getFromList(2, [input=drop_area_1]), &apos;C&apos;), ifthenelse(equals(getFromList(3, [input=drop_area_1]), &apos;D&apos;), ifthenelse(equals(getFromList(4, [input=drop_area_1]), &apos;E&apos;), 0, 1), 0), 0), 0), 0) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Steps B, A, C, and D are correct, but your final step is wrong. The last step is E - &quot;Repeat until all edges are used&quot;. This indicates the iterative nature of the extension process (C and D).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="12"/>
+        </FeedbackRule>
+        <FeedbackRule id="13">
+          <name>Feedback </name>
+          <orderIndex>5</orderIndex>
+          <validationExpression id="14">
+            <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;B&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;A&apos;), ifthenelse(equals(getFromList(2, [input=drop_area_1]), &apos;C&apos;), ifthenelse(equals(getFromList(3, [input=drop_area_1]), &apos;D&apos;), 0, 1), 0), 0), 0) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Steps B, A, and C are correct, but your fourth step is wrong. After finding a vertex with unused edges (C), the next step is D - &quot;Form a new cycle from that vertex and merge it into the main circuit&quot;. This extends the circuit.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="15"/>
+        </FeedbackRule>
+        <FeedbackRule id="16">
+          <name>Feedback </name>
+          <orderIndex>7</orderIndex>
+          <validationExpression id="17">
+            <code></code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Review the algorithm structure: initialize at any vertex (B), form an initial cycle (A), find vertices with unused edges (C), extend by forming and merging new cycles (D), and repeat until complete (E).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="18"/>
+        </FeedbackRule>
+        <FeedbackRule id="19">
+          <name>Feedback </name>
+          <orderIndex>2</orderIndex>
+          <validationExpression id="20">
+            <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;B&apos;), 0, 1) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Your first step is wrong. The algorithm must begin at step B - &quot;Start at any vertex&quot;. Since we&apos;re finding an Eulerian circuit, all vertices have even degree, so any vertex can serve as the starting point.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="21"/>
+        </FeedbackRule>
+        <FeedbackRule id="22">
+          <name>Feedback </name>
+          <orderIndex>1</orderIndex>
+          <validationExpression id="23">
+            <code>equalList([input=drop_area_1], list(&apos;B&apos;, &apos;A&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;))</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Hierholzer&apos;s algorithm begins by selecting any starting vertex (B), then forms an initial cycle by traversing and removing edges (A). When unused edges remain, it identifies a vertex on the current circuit with unused edges (C), creates a new cycle from that point (D), and merges it into the main circuit. This process repeats (E) until all edges are consumed.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>100</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="24"/>
+        </FeedbackRule>
+        <FeedbackRule id="25">
+          <name>Feedback </name>
+          <orderIndex>4</orderIndex>
+          <validationExpression id="26">
+            <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;B&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;A&apos;), ifthenelse(equals(getFromList(2, [input=drop_area_1]), &apos;C&apos;), 0, 1), 0), 0) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Steps B and A are correct, but your third step is wrong. After forming the initial cycle (A), the next step is C - &quot;If there are unused edges, find a vertex on the current circuit with unused edges&quot;. This identifies where to extend the circuit.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="27"/>
+        </FeedbackRule>
+        <FeedbackRule id="28">
+          <name>Feedback </name>
+          <orderIndex>3</orderIndex>
+          <validationExpression id="29">
+            <code>ifthenelse(equals(getFromList(0, [input=drop_area_1]), &apos;B&apos;), ifthenelse(equals(getFromList(1, [input=drop_area_1]), &apos;A&apos;), 0, 1), 0) == 1</code>
+            <domain>MATH</domain>
+          </validationExpression>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Step B is correct, but your second step is wrong. After selecting a starting vertex (B), the next step is A - &quot;Follow edges to form a cycle, removing edges as you traverse them&quot;. This creates the initial circuit.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B $\to$ A $\to$ C $\to$ D $\to$ E&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+          <points>0</points>
+          <terminal>true</terminal>
+          <fieldsToBeMarked id="30"/>
+        </FeedbackRule>
+      </feedbackRules>
+      <defaultTransition id="31">
+        <conditionExpression id="32">
+          <domain>MATH</domain>
+        </conditionExpression>
+        <stageExpression id="33">
+          <domain>MATH</domain>
+        </stageExpression>
+        <type>NEXT_OR_END</type>
+        <extraWeight>0</extraWeight>
+      </defaultTransition>
+      <skipTransitions id="34"/>
+      <stageTransitions id="35"/>
+      <hints id="36"/>
+      <variableUpdatesOnEnter id="37"/>
+      <variableUpdatesBeforeCheck id="38"/>
+      <variableUpdatesAfterCheck id="39"/>
+      <variableUpdatesOnNormalExit id="40"/>
+      <variableUpdatesOnRepeat id="41"/>
+      <variableUpdatesOnSkip id="42"/>
+      <weight>1</weight>
+      <orderIndex>0</orderIndex>
+      <allowSkip>true</allowSkip>
+      <resources id="43"/>
+      <draggables id="44">
+        <Draggable id="45">
+          <variableName>A</variableName>
+          <htmlContent>&lt;div&gt;A) Follow edges to form a cycle, removing edges as you traverse them&lt;/div&gt;</htmlContent>
+          <pool id="46">
+            <variableName>draggable_pool_1</variableName>
+            <width>850</width>
+            <height>200</height>
+            <label></label>
+            <fullWidth>true</fullWidth>
+            <shuffleDraggables>false</shuffleDraggables>
+            <dndTextStage reference="5"/>
+          </pool>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="47">
+          <variableName>E</variableName>
+          <htmlContent>&lt;div&gt;E) Repeat until all edges are used&lt;/div&gt;</htmlContent>
+          <pool reference="46"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="48">
+          <variableName>C</variableName>
+          <htmlContent>&lt;div&gt;C) If there are unused edges, find a vertex on the current circuit with unused edges&lt;/div&gt;</htmlContent>
+          <pool reference="46"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="49">
+          <variableName>D</variableName>
+          <htmlContent>&lt;div&gt;D) Form a new cycle from that vertex and merge it into the main circui&lt;/div&gt;</htmlContent>
+          <pool reference="46"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+        <Draggable id="50">
+          <variableName>B</variableName>
+          <htmlContent>&lt;div&gt;B) Start at any vertex (all vertices have even degree&lt;/div&gt;</htmlContent>
+          <pool reference="46"/>
+          <dragDirection>BOTH</dragDirection>
+          <numberOfDraggables>1</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <dndTextStage reference="5"/>
+        </Draggable>
+      </draggables>
+      <dropAreas id="51">
+        <DropArea id="52">
+          <variableName>drop_area_1</variableName>
+          <width>850</width>
+          <height>300</height>
+          <numberOfDraggables>5</numberOfDraggables>
+          <infiniteDraggables>false</infiniteDraggables>
+          <label></label>
+          <fullWidth>true</fullWidth>
+          <horizontalDraggableAlignment>false</horizontalDraggableAlignment>
+          <dndTextStage reference="5"/>
+        </DropArea>
+      </dropAreas>
+      <draggablePools id="53">
+        <DraggablePool reference="46"/>
+      </draggablePools>
+    </DNDTextStage>
+  </stages>
+  <startStage class="DNDTextStage" reference="5"/>
+  <variableDeclarations id="54">
+    <VariableDeclaration id="55">
+      <name>correctSequence</name>
+      <initializationCode id="56">
+        <code>list(&apos;B&apos;, &apos;A&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;)</code>
+        <domain>MATH</domain>
+      </initializationCode>
+    </VariableDeclaration>
+  </variableDeclarations>
+  <jSXGraphs id="57"/>
+  <dynamicMolecules id="58"/>
+  <resultFeedbackMappings id="59"/>
+</Exercise>

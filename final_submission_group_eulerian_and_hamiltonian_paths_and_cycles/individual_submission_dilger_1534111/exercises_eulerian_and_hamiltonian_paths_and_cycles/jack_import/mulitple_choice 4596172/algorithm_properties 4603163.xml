@@ -1,0 +1,344 @@
+<Exercise id="1">
+  <name>algorithm_properties</name>
+  <internalNotes></internalNotes>
+  <language>en</language>
+  <difficulty>0</difficulty>
+  <tags id="2"/>
+  <resources id="3"/>
+  <stages id="4">
+    <MCStage id="5">
+      <internalName>#1</internalName>
+      <externalName>Fleury&apos;s Algorithm Properties</externalName>
+      <taskDescription>&lt;div&gt;Which statements about Fleury&apos;s algorithm are true?&lt;/div&gt;</taskDescription>
+      <feedbackRules id="6"/>
+      <defaultTransition id="7">
+        <conditionExpression id="8">
+          <domain>MATH</domain>
+        </conditionExpression>
+        <stageExpression id="9">
+          <domain>MATH</domain>
+        </stageExpression>
+        <targetStage class="MCStage" id="10">
+          <internalName>#2</internalName>
+          <externalName>Hierholzer&apos;s Algorithm Characteristics</externalName>
+          <taskDescription>&lt;div&gt;Which are true about Hierholzer&apos;s algorithm?&lt;/div&gt;</taskDescription>
+          <feedbackRules id="11"/>
+          <defaultTransition id="12">
+            <conditionExpression id="13">
+              <domain>MATH</domain>
+            </conditionExpression>
+            <stageExpression id="14">
+              <domain>MATH</domain>
+            </stageExpression>
+            <type>NEXT_OR_END</type>
+            <extraWeight>0</extraWeight>
+          </defaultTransition>
+          <skipTransitions id="15"/>
+          <stageTransitions id="16"/>
+          <hints id="17"/>
+          <variableUpdatesOnEnter id="18"/>
+          <variableUpdatesBeforeCheck id="19"/>
+          <variableUpdatesAfterCheck id="20"/>
+          <variableUpdatesOnNormalExit id="21"/>
+          <variableUpdatesOnRepeat id="22"/>
+          <variableUpdatesOnSkip id="23"/>
+          <weight>1</weight>
+          <orderIndex>1</orderIndex>
+          <allowSkip>true</allowSkip>
+          <resources id="24"/>
+          <answerOptions id="25">
+            <MCAnswer id="26">
+              <order>0</order>
+              <rule>CORRECT</rule>
+              <text>&lt;div&gt;It runs in $\mathcal{O}(E)$ linear time&lt;/div&gt;</text>
+              <variableName></variableName>
+              <mcstage reference="10"/>
+            </MCAnswer>
+            <MCAnswer id="27">
+              <order>1</order>
+              <rule>CORRECT</rule>
+              <text>&lt;div&gt;It builds the circuit by combining smaller circuits&lt;/div&gt;</text>
+              <variableName></variableName>
+              <mcstage reference="10"/>
+            </MCAnswer>
+            <MCAnswer id="28">
+              <order>2</order>
+              <rule>WRONG</rule>
+              <text>&lt;div&gt;It requires the graph to have all odd-degree vertices&lt;/div&gt;</text>
+              <variableName></variableName>
+              <mcstage reference="10"/>
+            </MCAnswer>
+          </answerOptions>
+          <randomize>false</randomize>
+          <correctAnswerFeedback>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Hierholzer&apos;s runs in $\mathcal{O}(E)$ and builds the Eulerian circuit by constructing and merging cycles. It requires all vertices to have even degree.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</correctAnswerFeedback>
+          <pointMode>MANUAL</pointMode>
+          <feedbackDisplayMode>NEVER</feedbackDisplayMode>
+          <defaultResult>0</defaultResult>
+          <extraFeedbacks id="29">
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="30">
+              <feedback__order>0</feedback__order>
+              <stage reference="10"/>
+              <expression id="31">
+                <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="32">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Hierholzer&apos;s runs in linear time and combines circuits. But it requires all even-degree vertices, not odd.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="33">
+              <feedback__order>1</feedback__order>
+              <stage reference="10"/>
+              <expression id="34">
+                <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="35">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Hierholzer&apos;s does run in linear time, but it requires all vertices to have even degree (not odd) for Eulerian circuits. Missing: combines circuits.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="36">
+              <feedback__order>2</feedback__order>
+              <stage reference="10"/>
+              <expression id="37">
+                <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="38">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Hierholzer&apos;s does combine circuits, but requires even degrees (not odd). For Eulerian paths, exactly 2 vertices have odd degree. Missing: runs in linear time.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="39">
+              <feedback__order>3</feedback__order>
+              <stage reference="10"/>
+              <expression id="40">
+                <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="41">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. Hierholzer&apos;s runs in $\mathcal{O}(E)$, but you&apos;re missing its key approach: building circuits and merging them together.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="42">
+              <feedback__order>4</feedback__order>
+              <stage reference="10"/>
+              <expression id="43">
+                <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="44">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. Hierholzer&apos;s does build by combining circuits, but you&apos;re missing that it runs in linear time (faster than Fleury&apos;s $\mathcal{O}(E^2)$).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="45">
+              <feedback__order>5</feedback__order>
+              <stage reference="10"/>
+              <expression id="46">
+                <code>![input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="47">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Hierholzer&apos;s requires all vertices to have even degree for Eulerian circuits. It runs in linear time and combines smaller circuits.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It runs in $\mathcal{O}(E)$ linear time and B) It builds the circuit by combining smaller circuits&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+          </extraFeedbacks>
+        </targetStage>
+        <type>NEXT_OR_END</type>
+        <extraWeight>0</extraWeight>
+      </defaultTransition>
+      <skipTransitions id="48"/>
+      <stageTransitions id="49"/>
+      <hints id="50"/>
+      <variableUpdatesOnEnter id="51"/>
+      <variableUpdatesBeforeCheck id="52"/>
+      <variableUpdatesAfterCheck id="53"/>
+      <variableUpdatesOnNormalExit id="54"/>
+      <variableUpdatesOnRepeat id="55"/>
+      <variableUpdatesOnSkip id="56"/>
+      <weight>1</weight>
+      <orderIndex>0</orderIndex>
+      <allowSkip>true</allowSkip>
+      <resources id="57"/>
+      <answerOptions id="58">
+        <MCAnswer id="59">
+          <order>0</order>
+          <rule>CORRECT</rule>
+          <text>&lt;div&gt;It avoids traversing bridges unless necessary&lt;/div&gt;</text>
+          <variableName></variableName>
+          <mcstage reference="5"/>
+        </MCAnswer>
+        <MCAnswer id="60">
+          <order>1</order>
+          <rule>WRONG</rule>
+          <text>&lt;div&gt;It requires backtracking&lt;/div&gt;</text>
+          <variableName></variableName>
+          <mcstage reference="5"/>
+        </MCAnswer>
+        <MCAnswer id="61">
+          <order>2</order>
+          <rule>WRONG</rule>
+          <text>&lt;div&gt;It runs in $\mathcal{O}(E)$ linear time&lt;/div&gt;</text>
+          <variableName></variableName>
+          <mcstage reference="5"/>
+        </MCAnswer>
+      </answerOptions>
+      <randomize>false</randomize>
+      <correctAnswerFeedback>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Fleury&apos;s key rule is to never cross a bridge unless there&apos;s no choice. It doesn&apos;t backtrack and runs in $\mathcal{O}(E^2)$, not linear.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</correctAnswerFeedback>
+      <pointMode>MANUAL</pointMode>
+      <feedbackDisplayMode>NEVER</feedbackDisplayMode>
+      <defaultResult>0</defaultResult>
+      <extraFeedbacks id="62">
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="63">
+          <feedback__order>0</feedback__order>
+          <stage reference="5"/>
+          <expression id="64">
+            <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="65">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Fleury&apos;s avoids bridges but doesn&apos;t require backtracking. It runs in $\mathcal{O}(E^2)$, not $\mathcal{O}(E)$.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="66">
+          <feedback__order>1</feedback__order>
+          <stage reference="5"/>
+          <expression id="67">
+            <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="68">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Fleury&apos;s avoids traversing bridges, but it doesn&apos;t require backtracking. The bridge-avoidance rule prevents getting stuck.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="69">
+          <feedback__order>2</feedback__order>
+          <stage reference="5"/>
+          <expression id="70">
+            <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="71">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Fleury&apos;s avoids bridges, but it&apos;s not linear. It runs in $\mathcal{O}(E^2)$ due to repeated bridge checking. Hierholzer&apos;s is linear.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="72">
+          <feedback__order>3</feedback__order>
+          <stage reference="5"/>
+          <expression id="73">
+            <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="74">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Fleury&apos;s doesn&apos;t require backtracking and isn&apos;t linear time. It avoids bridges to construct the path forward in $\mathcal{O}(E^2)$.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="75">
+          <feedback__order>4</feedback__order>
+          <stage reference="5"/>
+          <expression id="76">
+            <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="77">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Fleury&apos;s algorithm doesn&apos;t require backtracking. It avoids bridges to ensure a valid path is constructed forward.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="78">
+          <feedback__order>5</feedback__order>
+          <stage reference="5"/>
+          <expression id="79">
+            <code>![input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="80">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Fleury&apos;s runs in $\mathcal{O}(E^2)$ due to checking for bridges at each step. Hierholzer&apos;s algorithm is the linear-time one.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: It avoids traversing bridges unless necessary&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+      </extraFeedbacks>
+    </MCStage>
+    <MCStage reference="10"/>
+  </stages>
+  <startStage class="MCStage" reference="5"/>
+  <variableDeclarations id="81"/>
+  <jSXGraphs id="82"/>
+  <dynamicMolecules id="83"/>
+  <resultFeedbackMappings id="84"/>
+</Exercise>

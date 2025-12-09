@@ -1,0 +1,509 @@
+<Exercise id="1">
+  <name>graph_types</name>
+  <internalNotes></internalNotes>
+  <language>en</language>
+  <difficulty>0</difficulty>
+  <tags id="2"/>
+  <resources id="3"/>
+  <stages id="4">
+    <MCStage id="5">
+      <internalName>#1</internalName>
+      <externalName>Graph Types and Eulerian Circuits</externalName>
+      <taskDescription>&lt;div&gt;Which of these graph types can have Eulerian circuits?&lt;/div&gt;</taskDescription>
+      <feedbackRules id="6"/>
+      <defaultTransition id="7">
+        <conditionExpression id="8">
+          <domain>MATH</domain>
+        </conditionExpression>
+        <stageExpression id="9">
+          <domain>MATH</domain>
+        </stageExpression>
+        <targetStage class="MCStage" id="10">
+          <internalName>#2</internalName>
+          <externalName>Graphs Without Hamiltonian Cycles</externalName>
+          <taskDescription>&lt;div&gt;Which graphs never have Hamiltonian cycles?&lt;/div&gt;</taskDescription>
+          <feedbackRules id="11"/>
+          <defaultTransition id="12">
+            <conditionExpression id="13">
+              <domain>MATH</domain>
+            </conditionExpression>
+            <stageExpression id="14">
+              <domain>MATH</domain>
+            </stageExpression>
+            <targetStage class="MCStage" id="15">
+              <internalName>#3</internalName>
+              <externalName>Traveling Salesman Problem Properties</externalName>
+              <taskDescription>&lt;div&gt;Which statements about the Traveling Salesman Problem are true?&lt;/div&gt;</taskDescription>
+              <feedbackRules id="16"/>
+              <defaultTransition id="17">
+                <conditionExpression id="18">
+                  <domain>MATH</domain>
+                </conditionExpression>
+                <stageExpression id="19">
+                  <domain>MATH</domain>
+                </stageExpression>
+                <type>NEXT_OR_END</type>
+                <extraWeight>0</extraWeight>
+              </defaultTransition>
+              <skipTransitions id="20"/>
+              <stageTransitions id="21"/>
+              <hints id="22"/>
+              <variableUpdatesOnEnter id="23"/>
+              <variableUpdatesBeforeCheck id="24"/>
+              <variableUpdatesAfterCheck id="25"/>
+              <variableUpdatesOnNormalExit id="26"/>
+              <variableUpdatesOnRepeat id="27"/>
+              <variableUpdatesOnSkip id="28"/>
+              <weight>1</weight>
+              <orderIndex>2</orderIndex>
+              <allowSkip>true</allowSkip>
+              <resources id="29"/>
+              <answerOptions id="30">
+                <MCAnswer id="31">
+                  <order>0</order>
+                  <rule>CORRECT</rule>
+                  <text>&lt;div&gt;TSP finds the shortest Hamiltonian cycle&lt;/div&gt;</text>
+                  <variableName></variableName>
+                  <mcstage reference="15"/>
+                </MCAnswer>
+                <MCAnswer id="32">
+                  <order>1</order>
+                  <rule>WRONG</rule>
+                  <text>&lt;div&gt;TSP can be solved in polynomial time&lt;/div&gt;</text>
+                  <variableName></variableName>
+                  <mcstage reference="15"/>
+                </MCAnswer>
+                <MCAnswer id="33">
+                  <order>2</order>
+                  <rule>CORRECT</rule>
+                  <text>&lt;div&gt;TSP requires weighted graphs&lt;/div&gt;</text>
+                  <variableName></variableName>
+                  <mcstage reference="15"/>
+                </MCAnswer>
+              </answerOptions>
+              <randomize>false</randomize>
+              <correctAnswerFeedback>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. TSP seeks the minimum-weight Hamiltonian cycle (visiting all vertices once). It requires edge weights to compare cycles. TSP is NP-complete, not polynomial-time solvable.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</correctAnswerFeedback>
+              <pointMode>MANUAL</pointMode>
+              <feedbackDisplayMode>NEVER</feedbackDisplayMode>
+              <defaultResult>0</defaultResult>
+              <extraFeedbacks id="34">
+                <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="35">
+                  <feedback__order>0</feedback__order>
+                  <stage reference="15"/>
+                  <expression id="36">
+                    <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                    <domain>MATH</domain>
+                  </expression>
+                  <condition id="37">
+                    <code></code>
+                    <domain>MATH</domain>
+                  </condition>
+                  <result>0</result>
+                  <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. TSP finds the shortest Hamiltonian cycle and requires weighted graphs. But it&apos;s NP-complete, not solvable in polynomial time.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+                </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+                <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="38">
+                  <feedback__order>1</feedback__order>
+                  <stage reference="15"/>
+                  <expression id="39">
+                    <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                    <domain>MATH</domain>
+                  </expression>
+                  <condition id="40">
+                    <code></code>
+                    <domain>MATH</domain>
+                  </condition>
+                  <result>0</result>
+                  <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. TSP does find the shortest Hamiltonian cycle, but it&apos;s NP-complete, not polynomial-time. Also missing: requires weighted graphs.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+                </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+                <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="41">
+                  <feedback__order>2</feedback__order>
+                  <stage reference="15"/>
+                  <expression id="42">
+                    <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                    <domain>MATH</domain>
+                  </expression>
+                  <condition id="43">
+                    <code></code>
+                    <domain>MATH</domain>
+                  </condition>
+                  <result>0</result>
+                  <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. TSP requires weighted graphs but is NP-complete, not polynomial-time solvable. Also missing: it finds the shortest Hamiltonian cycle.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+                </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+                <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="44">
+                  <feedback__order>3</feedback__order>
+                  <stage reference="15"/>
+                  <expression id="45">
+                    <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                    <domain>MATH</domain>
+                  </expression>
+                  <condition id="46">
+                    <code></code>
+                    <domain>MATH</domain>
+                  </condition>
+                  <result>0</result>
+                  <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. TSP finds the shortest Hamiltonian cycle, but you&apos;re missing that it requires weighted graphs (to define &quot;shortest&quot;).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+                </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+                <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="47">
+                  <feedback__order>4</feedback__order>
+                  <stage reference="15"/>
+                  <expression id="48">
+                    <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                    <domain>MATH</domain>
+                  </expression>
+                  <condition id="49">
+                    <code></code>
+                    <domain>MATH</domain>
+                  </condition>
+                  <result>0</result>
+                  <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. TSP is NP-complete and cannot be solved in polynomial time (unless P=NP). It finds the shortest Hamiltonian cycle in weighted graphs.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+                </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+                <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="50">
+                  <feedback__order>5</feedback__order>
+                  <stage reference="15"/>
+                  <expression id="51">
+                    <code>![input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                    <domain>MATH</domain>
+                  </expression>
+                  <condition id="52">
+                    <code></code>
+                    <domain>MATH</domain>
+                  </condition>
+                  <result>0</result>
+                  <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. TSP requires weighted graphs, but you&apos;re missing that it finds the shortest Hamiltonian cycle (that&apos;s the goal).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: TSP finds the shortest Hamiltonian cycle and C) TSP requires weighted graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+                </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+              </extraFeedbacks>
+            </targetStage>
+            <type>NEXT_OR_END</type>
+            <extraWeight>0</extraWeight>
+          </defaultTransition>
+          <skipTransitions id="53"/>
+          <stageTransitions id="54"/>
+          <hints id="55"/>
+          <variableUpdatesOnEnter id="56"/>
+          <variableUpdatesBeforeCheck id="57"/>
+          <variableUpdatesAfterCheck id="58"/>
+          <variableUpdatesOnNormalExit id="59"/>
+          <variableUpdatesOnRepeat id="60"/>
+          <variableUpdatesOnSkip id="61"/>
+          <weight>1</weight>
+          <orderIndex>1</orderIndex>
+          <allowSkip>true</allowSkip>
+          <resources id="62"/>
+          <answerOptions id="63">
+            <MCAnswer id="64">
+              <order>0</order>
+              <rule>CORRECT</rule>
+              <text>&lt;div&gt;Trees with more than 2 vertices&lt;/div&gt;</text>
+              <variableName></variableName>
+              <mcstage reference="10"/>
+            </MCAnswer>
+            <MCAnswer id="65">
+              <order>1</order>
+              <rule>CORRECT</rule>
+              <text>&lt;div&gt;Disconnected graphs&lt;/div&gt;</text>
+              <variableName></variableName>
+              <mcstage reference="10"/>
+            </MCAnswer>
+            <MCAnswer id="66">
+              <order>2</order>
+              <rule>WRONG</rule>
+              <text>&lt;div&gt;All bipartite graphs&lt;/div&gt;</text>
+              <variableName></variableName>
+              <mcstage reference="10"/>
+            </MCAnswer>
+          </answerOptions>
+          <randomize>false</randomize>
+          <correctAnswerFeedback>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Trees are acyclic (no cycles possible). Disconnected graphs can&apos;t have a single cycle visiting all vertices. But bipartite graphs can have Hamiltonian cycles (e.g., even cycles).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</correctAnswerFeedback>
+          <pointMode>MANUAL</pointMode>
+          <feedbackDisplayMode>NEVER</feedbackDisplayMode>
+          <defaultResult>0</defaultResult>
+          <extraFeedbacks id="67">
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="68">
+              <feedback__order>0</feedback__order>
+              <stage reference="10"/>
+              <expression id="69">
+                <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="70">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Trees and disconnected graphs never have Hamiltonian cycles. But some bipartite graphs do (e.g., $C_6$ or $K_{3,3}$).&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="71">
+              <feedback__order>1</feedback__order>
+              <stage reference="10"/>
+              <expression id="72">
+                <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="73">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Trees never have Hamiltonian cycles (acyclic), but bipartite graphs can (e.g., $C_6$, $K_{3,3}$). Also missing: disconnected graphs.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="74">
+              <feedback__order>2</feedback__order>
+              <stage reference="10"/>
+              <expression id="75">
+                <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="76">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Disconnected graphs can&apos;t have Hamiltonian cycles, but bipartite graphs can (e.g., even cycles). Also missing: trees.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="77">
+              <feedback__order>3</feedback__order>
+              <stage reference="10"/>
+              <expression id="78">
+                <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="79">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. Trees never have Hamiltonian cycles (acyclic), but disconnected graphs also can&apos;t have them. Can&apos;t visit all vertices in different components with one cycle.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="80">
+              <feedback__order>4</feedback__order>
+              <stage reference="10"/>
+              <expression id="81">
+                <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="82">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. Disconnected graphs can&apos;t have Hamiltonian cycles, but trees (with &amp;gt;2 vertices) also never do since they&apos;re acyclic.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+            <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="83">
+              <feedback__order>5</feedback__order>
+              <stage reference="10"/>
+              <expression id="84">
+                <code>![input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+                <domain>MATH</domain>
+              </expression>
+              <condition id="85">
+                <code></code>
+                <domain>MATH</domain>
+              </condition>
+              <result>0</result>
+              <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Bipartite graphs can have Hamiltonian cycles. Examples: any even cycle (like $C_6$) or $K_{3,3}$. Trees and disconnected graphs never do.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Trees with more than 2 vertices and B) Disconnected graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+            </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+          </extraFeedbacks>
+        </targetStage>
+        <type>NEXT_OR_END</type>
+        <extraWeight>0</extraWeight>
+      </defaultTransition>
+      <skipTransitions id="86"/>
+      <stageTransitions id="87"/>
+      <hints id="88"/>
+      <variableUpdatesOnEnter id="89"/>
+      <variableUpdatesBeforeCheck id="90"/>
+      <variableUpdatesAfterCheck id="91"/>
+      <variableUpdatesOnNormalExit id="92"/>
+      <variableUpdatesOnRepeat id="93"/>
+      <variableUpdatesOnSkip id="94"/>
+      <weight>1</weight>
+      <orderIndex>0</orderIndex>
+      <allowSkip>true</allowSkip>
+      <resources id="95"/>
+      <answerOptions id="96">
+        <MCAnswer id="97">
+          <order>0</order>
+          <rule>WRONG</rule>
+          <text>&lt;div&gt;Trees&lt;/div&gt;</text>
+          <variableName></variableName>
+          <mcstage reference="5"/>
+        </MCAnswer>
+        <MCAnswer id="98">
+          <order>1</order>
+          <rule>CORRECT</rule>
+          <text>&lt;div&gt;Cycle graphs&lt;/div&gt;</text>
+          <variableName></variableName>
+          <mcstage reference="5"/>
+        </MCAnswer>
+        <MCAnswer id="99">
+          <order>2</order>
+          <rule>WRONG</rule>
+          <text>&lt;div&gt;Complete bipartite graphs $K_{m,n}$&lt;/div&gt;</text>
+          <variableName></variableName>
+          <mcstage reference="5"/>
+        </MCAnswer>
+      </answerOptions>
+      <randomize>false</randomize>
+      <correctAnswerFeedback>&lt;div&gt;&#xd;
+&lt;div&gt;Correct. Cycle graphs always have Eulerian circuits (all vertices have degree 2). Trees can&apos;t (acyclic), and $K_{m,n}$ only when $m=n$.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: B) Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</correctAnswerFeedback>
+      <pointMode>MANUAL</pointMode>
+      <feedbackDisplayMode>NEVER</feedbackDisplayMode>
+      <defaultResult>0</defaultResult>
+      <extraFeedbacks id="100">
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="101">
+          <feedback__order>0</feedback__order>
+          <stage reference="5"/>
+          <expression id="102">
+            <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="103">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Trees are acyclic so cannot have circuits. Cycle graphs always have Eulerian circuits. $K_{m,n}$ only when both partitions have same size.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="104">
+          <feedback__order>1</feedback__order>
+          <stage reference="5"/>
+          <expression id="105">
+            <code>[input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="106">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Trees cannot have Eulerian circuits (they have no cycles at all). Cycle graphs always do. $K_{m,n}$ sometimes works but not always.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="107">
+          <feedback__order>2</feedback__order>
+          <stage reference="5"/>
+          <expression id="108">
+            <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="109">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Trees cannot have circuits (acyclic). $K_{m,n}$ can have Eulerian circuits only when $m=n$. Cycle graphs always have them.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="110">
+          <feedback__order>3</feedback__order>
+          <stage reference="5"/>
+          <expression id="111">
+            <code>![input=mcindex_0]&amp;&amp;[input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="112">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Partially correct. Cycle graphs always have Eulerian circuits. But $K_{m,n}$ only has them when $m=n$ (both partitions equal), not for all $m,n$.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="113">
+          <feedback__order>4</feedback__order>
+          <stage reference="5"/>
+          <expression id="114">
+            <code>[input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;![input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="115">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. Trees are acyclic and cannot have any circuits, including Eulerian circuits. Cycle graphs always have Eulerian circuits.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+        <de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback id="116">
+          <feedback__order>5</feedback__order>
+          <stage reference="5"/>
+          <expression id="117">
+            <code>![input=mcindex_0]&amp;&amp;![input=mcindex_1]&amp;&amp;[input=mcindex_2]</code>
+            <domain>MATH</domain>
+          </expression>
+          <condition id="118">
+            <code></code>
+            <domain>MATH</domain>
+          </condition>
+          <result>0</result>
+          <feedbackText>&lt;div&gt;&#xd;
+&lt;div&gt;Incorrect. $K_{m,n}$ doesn&apos;t always have Eulerian circuits - only when $m=n$. For $K_{2,3}$, vertices in the smaller partition have odd degree. Cycle graphs always work.&lt;/div&gt;&#xd;
+&lt;div&gt;Solution: Cycle graphs&lt;/div&gt;&#xd;
+&lt;/div&gt;</feedbackText>
+        </de.uni__due.s3.jack3.entities.stagetypes.mc.MCFeedback>
+      </extraFeedbacks>
+    </MCStage>
+    <MCStage reference="10"/>
+    <MCStage reference="15"/>
+  </stages>
+  <startStage class="MCStage" reference="5"/>
+  <variableDeclarations id="119"/>
+  <jSXGraphs id="120"/>
+  <dynamicMolecules id="121"/>
+  <resultFeedbackMappings id="122"/>
+</Exercise>
